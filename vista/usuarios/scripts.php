@@ -360,8 +360,8 @@
  	//recuperar contraseña
  	$('#form_send_email').submit(function(event) {
  		event.preventDefault();
-		 let reload = document.getElementById("reload");
-		 reload.classList.remove("d-none");
+ 		let reload = document.getElementById("reload");
+ 		reload.classList.remove("d-none");
  		let email = document.getElementById("email").value;
  		$.ajax({
  			type: 'POST',
@@ -373,8 +373,10 @@
  			success: function(data) {
  				//Cuando la interacción sea exitosa, se ejecutará esto.
  				alertify.success(data)
-				 reload.classList.add("d-none");
- 				location.href = "../login/index.php";
+ 				setTimeout(function() {
+ 					reload.classList.add("d-none");
+ 					location.href = "../login/index.php";
+ 				}, 1000)
  			},
  			error: function(data) {
  				//Cuando la interacción retorne un error, se ejecutará esto.
@@ -386,7 +388,7 @@
  	// actualizar contraseña
  	$('#forgetPss').submit(function(event) {
  		event.preventDefault();
-		 reload.classList.remove("d-none");
+ 		reload.classList.remove("d-none");
  		var email = document.getElementById("email").value;
  		var emailEncript = document.getElementById("emailEncript").value;
  		var idUser = document.getElementById("idUser").value;
@@ -410,7 +412,10 @@
  				success: function(data) {
  					//Cuando la interacción sea exitosa, se ejecutará esto.
  					alertify.success(data)
-					 reload.classList.add("d-none");
+ 					setTimeout(function() {
+ 						reload.classList.add("d-none");
+ 						location.href = "../login/index.php";
+ 					}, 1000)
  				},
  				error: function(data) {
  					//Cuando la interacción retorne un error, se ejecutará esto.

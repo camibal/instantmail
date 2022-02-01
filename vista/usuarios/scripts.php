@@ -362,9 +362,7 @@
  		event.preventDefault();
  		let reload = document.getElementById("reload");
  		let email = document.getElementById("email").value;
-
-
- 		// btn6.onclick = function() {
+		 
  		swal({
  				title: "¿Estás seguro?",
  				text: "¿Deseas continuar?",
@@ -386,27 +384,6 @@
  					swal("Cancelado");
  				}
  			});
- 		// };
-
-
- 		// $("#exampleModal").modal('show', function() {
- 		// 	alert("entro")
- 		// 	$('.btn-ok').submit(function() {
- 		// 		console.log("Llamamos a la función de eliminación");
- 		// 	});
- 		// });
-
- 		// $('#exampleModal').modal();
- 		// $(document).on('show.bs.modal', function(e) {
- 		// $('#confirm').click(function() {
- 		// 		console.log("Llamamos a la función de eliminación");
- 		// 		 $("#exampleModal").modal("hide");
- 		// });
- 		// $("#confirm").on("click", function(e) {
- 		// 	console.log("button pressed"); // just as an example...
- 		// 	$("#exampleModal").modal('hide'); // dismiss the dialog
- 		// });
- 		// });
 
  		// var confirmar = confirm("¿Desea enviarlo? ");
  		// if (confirmar) {

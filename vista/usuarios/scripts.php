@@ -390,13 +390,10 @@
  					setTimeout(function() {
  						reload.classList.add("d-none");
  						window.location = "../login/index.php";
- 					}, 1000)
+ 					}, 1000);
  				} else {
 					alertify.success(data)
-					 setTimeout(function(){
-						location.reload();
-					 },2000)
-					return false;
+					reload.classList.add("d-none");
  				}
  			},
  			error: function(data) {

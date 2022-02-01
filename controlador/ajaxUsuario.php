@@ -83,30 +83,18 @@ if ($tipo == 'recuperar') {
     $email = $_POST['email'];
     $token = $encriptar($email);
     $emails = $usuario->getCorreosClientes($email);
-    if ($emails) {
-        for ($i = 0; $i < count($emails); $i++) {
-            $id_usuario = $emails[$i]['id_usuario'];
-            $validateEmail = $usuario->validarCorreoCliente($email);
-            $tokens = $usuario->getTokens($token);
-            if ($tokens) {
-                // el usuario si existe en la tabla tokens
-                if ($validateEmail) {
-                    createToken($email, $id_usuario, 1);
-                } else {
-                    echo "El email no se encuentra registrado";
-                }
-            } else {
-                // el usuario no existe en tabla tokens
-                if ($validateEmail) {
-                    createToken($email, $id_usuario, 2);
-                } else {
-                    echo "El correo no se encuentra registrado";
-                }
-            }
+    if ($emails[0]["cantidad"] > 0) {
+        $id_usuario = $emails[0]['id_usuario'];
+        $tokens = $usuario->getTokens($token);
+        if ($tokens) {
+            // si existe
+            createToken($email, $id_usuario, 1);
+        } else {
+            // no existe
+            createToken($email, $id_usuario, 2);
         }
     } else {
-        echo "No se consulto";
-        // return 'No se consulto';
+        echo "El correo electrónico escrito no se encuentra en nuestra base de datos , por favor verifique";
     }
 }
 // crear token
@@ -127,13 +115,13 @@ function sendEmail($emaiEncrypt, $email, $id_usuario, $number)
         $mail->isSMTP();                                            //Send using SMTP
         $mail->Host       = 'smtp.office365.com';                     //Set the SMTP server to send through
         $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-        $mail->Username   = 'correo-app@outlook.com';                     //SMTP username
-        $mail->Password   = '***';                               //SMTP password
+        $mail->Username   = 'megalabs.app@outlook.com';                     //SMTP username
+        $mail->Password   = 'MiAppMegalabs!';                               //SMTP password
         $mail->SMTPSecure = 'STARTTLS';            //Enable implicit TLS encryption
         $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
         //Recipients
-        $mail->setFrom('correo-app@outlook.com');
+        $mail->setFrom('megalabs.app@outlook.com');
         $mail->addAddress($email);
 
         //Content
@@ -201,7 +189,7 @@ function sendEmail($emaiEncrypt, $email, $id_usuario, $number)
 </div>';
 
         $mail->send();
-        echo "El correo ha sido enviado correctamente";
+        echo "Se ha realizado el envío del link para el cambio de contraseña al correo $email , por favor ingresé y siga las instrucciones, para reestablecer la contraseña";
         postDataEmail($emaiEncrypt, $id_usuario, $number);
     } catch (Exception $e) {
         echo "No se pudo enviar el correo. Error de correo: {$mail->ErrorInfo}";

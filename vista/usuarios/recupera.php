@@ -86,6 +86,26 @@ $usuario = new Usuario();
   </div>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal de confirmación</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Tu correo ha sido envado exitosamente
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success btn-ok" id="confirm">Confirmar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="reload d-none" id="reload" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fff; display: flex; justify-content: center; align-items: center;">
   <img src="../../imagenes/Logo.png" alt="">
 </div>

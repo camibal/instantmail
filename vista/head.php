@@ -1,36 +1,37 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
     <meta http-equiv="content-language" content="es">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
-            Instant Mail - Software
+        Instant Mail - Software
     </title>
-        <!-- Custom styles for this template-->
+    <!-- Custom styles for this template-->
     <!--    favicon-->
-    <link href="../imagenes/favicon.png" rel="shortcut icon" type="image/x-icon"/>
+    <link href="../imagenes/favicon.png" rel="shortcut icon" type="image/x-icon" />
     <!-- Estilo del boostrap V 3.4.1 -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <!-- Estilo del alertifyjs -->
     <!-- JavaScript -->
 
     <!-- CSS -->
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css" />
     <!-- Default theme -->
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css" />
     <!-- Semantic UI theme -->
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css"/>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css" />
     <!-- Bootstrap theme -->
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css" />
 
     <!-- Estilo del login -->
-    <link href="../../css/estilos.css" rel="stylesheet"/>
+    <link href="../../css/estilos.css" rel="stylesheet" />
     <!-- Custom fonts for this template-->
-    <link href="componentes/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css"/>
+    <link href="componentes/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
     <!-- Custom styles for this template-->
-    <link href="componentes/css/sb-admin-2.min.css" rel="stylesheet"/>
+    <link href="componentes/css/sb-admin-2.min.css" rel="stylesheet" />
     <script src="componentes/vendor/jquery/jquery.min.js"></script>
     <script src="componentes/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- Core plugin JavaScript-->
@@ -48,4 +49,11 @@
     <script src="../../librerias/chartjs/Chart.min.js"></script>
     <script src="../../librerias/chartjs/utils.js"></script>
     <script src="../../librerias/chartjs/analyzer.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
 <body>

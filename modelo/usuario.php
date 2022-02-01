@@ -45,19 +45,8 @@ class Usuario
     //Trae todos los emails de cliente
     public function getCorreosClientes($email)
     {
-        $query = "SELECT id_usuario, email_usuario FROM usuario
+        $query = "SELECT id_usuario, count(*) as cantidad FROM usuario
         WHERE email_usuario = '$email' AND estado = 1";
-        $result = mysqli_query($this->link, $query);
-        $data   = array();
-        while ($data[] = mysqli_fetch_assoc($result));
-        array_pop($data);
-        return $data;
-    }
-    //Consulta que el email exista
-    public function validarCorreoCliente($email)
-    {
-        $query = "SELECT email_cliente FROM usuario
-        INNER JOIN cliente ON cliente.id_cliente = usuario.fkID_cliente WHERE cliente.email_cliente = '$email'";
         $result = mysqli_query($this->link, $query);
         $data   = array();
         while ($data[] = mysqli_fetch_assoc($result));

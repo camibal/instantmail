@@ -363,27 +363,48 @@
  		let reload = document.getElementById("reload");
  		reload.classList.remove("d-none");
  		let email = document.getElementById("email").value;
+
+ 		var confirmar = confirm("¿Desea enviarlo? ");
+ 		if (confirmar) {
+ 			sendEmail("recuperar", email);
+ 			return true;
+ 		} else {
+ 			reload.classList.add("d-none");
+ 			return false;
+ 		}
+ 	})
+
+ 	function sendEmail(tipo, email) {
+ 		let reload = document.getElementById("reload");
  		$.ajax({
  			type: 'POST',
  			url: "../../controlador/ajaxUsuario.php",
  			data: {
- 				"tipo": 'recuperar',
+ 				"tipo": tipo,
  				"email": email
  			},
  			success: function(data) {
- 				//Cuando la interacción sea exitosa, se ejecutará esto.
- 				alertify.success(data)
- 				setTimeout(function() {
- 					reload.classList.add("d-none");
- 					location.href = "../login/index.php";
- 				}, 1000)
+ 				if (data !== "El correo electrónico escrito no se encuentra en nuestra base de datos , por favor verifique") {
+ 					//Cuando la interacción sea exitosa, se ejecutará esto.
+ 					alertify.success(data)
+ 					setTimeout(function() {
+ 						reload.classList.add("d-none");
+ 						window.location = "../login/index.php";
+ 					}, 1000)
+ 				} else {
+					alertify.success(data)
+					 setTimeout(function(){
+						location.reload();
+					 },2000)
+					return false;
+ 				}
  			},
  			error: function(data) {
  				//Cuando la interacción retorne un error, se ejecutará esto.
  				alertify.success(data)
  			}
  		})
- 	})
+ 	}
 
  	// actualizar contraseña
  	$('#forgetPss').submit(function(event) {

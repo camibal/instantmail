@@ -97,7 +97,7 @@ $usuario = new Usuario();
         </button>
       </div>
       <div class="modal-body">
-        Tu correo ha sido envado exitosamente
+        ¿Desea enviarlo?
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-success btn-ok" id="confirm">Confirmar</button>

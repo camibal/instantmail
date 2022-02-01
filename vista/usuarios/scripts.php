@@ -361,17 +361,61 @@
  	$('#form_send_email').submit(function(event) {
  		event.preventDefault();
  		let reload = document.getElementById("reload");
- 		reload.classList.remove("d-none");
  		let email = document.getElementById("email").value;
 
- 		var confirmar = confirm("¿Desea enviarlo? ");
- 		if (confirmar) {
- 			sendEmail("recuperar", email);
- 			return true;
- 		} else {
- 			reload.classList.add("d-none");
- 			return false;
- 		}
+
+ 		// btn6.onclick = function() {
+ 		swal({
+ 				title: "¿Estás seguro?",
+ 				text: "¿Deseas continuar?",
+ 				type: "warning",
+ 				showCancelButton: true,
+ 				confirmButtonColor: "#28a745",
+ 				confirmButtonText: "Confirmar",
+ 				cancelButtonText: "Cancelar",
+ 				closeOnConfirm: false,
+ 				closeOnCancel: false
+ 			},
+ 			function(isConfirm) {
+ 				if (isConfirm) {
+ 					swal("Enviando solicitud");
+ 					reload.classList.remove("d-none");
+ 					sendEmail("recuperar", email);
+ 				} else {
+ 					// reload.classList.add("d-none");
+ 					swal("Cancelado");
+ 				}
+ 			});
+ 		// };
+
+
+ 		// $("#exampleModal").modal('show', function() {
+ 		// 	alert("entro")
+ 		// 	$('.btn-ok').submit(function() {
+ 		// 		console.log("Llamamos a la función de eliminación");
+ 		// 	});
+ 		// });
+
+ 		// $('#exampleModal').modal();
+ 		// $(document).on('show.bs.modal', function(e) {
+ 		// $('#confirm').click(function() {
+ 		// 		console.log("Llamamos a la función de eliminación");
+ 		// 		 $("#exampleModal").modal("hide");
+ 		// });
+ 		// $("#confirm").on("click", function(e) {
+ 		// 	console.log("button pressed"); // just as an example...
+ 		// 	$("#exampleModal").modal('hide'); // dismiss the dialog
+ 		// });
+ 		// });
+
+ 		// var confirmar = confirm("¿Desea enviarlo? ");
+ 		// if (confirmar) {
+ 		// 	sendEmail("recuperar", email);
+ 		// 	return true;
+ 		// } else {
+ 		// 	reload.classList.add("d-none");
+ 		// 	return false;
+ 		// }
  	})
 
  	function sendEmail(tipo, email) {
@@ -392,8 +436,8 @@
  						window.location = "../login/index.php";
  					}, 1000);
  				} else {
-					alertify.success(data)
-					reload.classList.add("d-none");
+ 					alertify.success(data)
+ 					reload.classList.add("d-none");
  				}
  			},
  			error: function(data) {

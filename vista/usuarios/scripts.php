@@ -360,9 +360,9 @@
  	//recuperar contraseña
  	$('#form_send_email').submit(function(event) {
  		event.preventDefault();
- 		let reload = document.getElementById("reload");
+ 		// let reload = document.getElementById("reload");
  		let email = document.getElementById("email").value;
-		 reload.classList.remove("d-none");
+ 		//  reload.classList.remove("d-none");
  		$.ajax({
  			type: 'POST',
  			url: "../../controlador/ajaxUsuario.php",
@@ -373,14 +373,11 @@
  			success: function(data) {
  				if (data !== "El correo electrónico escrito no se encuentra en nuestra base de datos , por favor verifique") {
  					//Cuando la interacción sea exitosa, se ejecutará esto.
- 					alertify.success(data)
- 					setTimeout(function() {
- 						reload.classList.add("d-none");
- 						window.location = "../login/index.php";
- 					}, 1000);
+ 					// alertify.success(data)
+					 $("#exampleModal").modal("show");
  				} else {
  					alertify.error(data)
- 					reload.classList.add("d-none");
+ 					// reload.classList.add("d-none");
  				}
  			},
  			error: function(data) {
@@ -390,34 +387,10 @@
  		})
  	})
 
- 	function sendEmail(tipo, email) {
- 		let reload = document.getElementById("reload");
- 		$.ajax({
- 			type: 'POST',
- 			url: "../../controlador/ajaxUsuario.php",
- 			data: {
- 				"tipo": tipo,
- 				"email": email
- 			},
- 			success: function(data) {
- 				if (data !== "El correo electrónico escrito no se encuentra en nuestra base de datos , por favor verifique") {
- 					//Cuando la interacción sea exitosa, se ejecutará esto.
- 					alertify.success(data)
- 					setTimeout(function() {
- 						reload.classList.add("d-none");
- 						window.location = "../login/index.php";
- 					}, 1000);
- 				} else {
- 					alertify.success(data)
- 					reload.classList.add("d-none");
- 				}
- 			},
- 			error: function(data) {
- 				//Cuando la interacción retorne un error, se ejecutará esto.
- 				alertify.success(data)
- 			}
- 		})
- 	}
+	 function rediLogin(){
+		$("#exampleModal").modal("hide");
+		window.location = "../login/index.php";
+	 }
 
  	// actualizar contraseña
  	$('#forgetPss').submit(function(event) {

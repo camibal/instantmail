@@ -362,37 +362,32 @@
  		event.preventDefault();
  		let reload = document.getElementById("reload");
  		let email = document.getElementById("email").value;
-		 
- 		swal({
- 				title: "¿Estás seguro?",
- 				text: "¿Deseas continuar?",
- 				type: "warning",
- 				showCancelButton: true,
- 				confirmButtonColor: "#28a745",
- 				confirmButtonText: "Confirmar",
- 				cancelButtonText: "Cancelar",
- 				closeOnConfirm: false,
- 				closeOnCancel: false
+		 reload.classList.remove("d-none");
+ 		$.ajax({
+ 			type: 'POST',
+ 			url: "../../controlador/ajaxUsuario.php",
+ 			data: {
+ 				"tipo": 'recuperar',
+ 				"email": email
  			},
- 			function(isConfirm) {
- 				if (isConfirm) {
- 					swal("Enviando solicitud");
- 					reload.classList.remove("d-none");
- 					sendEmail("recuperar", email);
+ 			success: function(data) {
+ 				if (data !== "El correo electrónico escrito no se encuentra en nuestra base de datos , por favor verifique") {
+ 					//Cuando la interacción sea exitosa, se ejecutará esto.
+ 					alertify.success(data)
+ 					setTimeout(function() {
+ 						reload.classList.add("d-none");
+ 						window.location = "../login/index.php";
+ 					}, 1000);
  				} else {
- 					// reload.classList.add("d-none");
- 					swal("Cancelado");
+ 					alertify.error(data)
+ 					reload.classList.add("d-none");
  				}
- 			});
-
- 		// var confirmar = confirm("¿Desea enviarlo? ");
- 		// if (confirmar) {
- 		// 	sendEmail("recuperar", email);
- 		// 	return true;
- 		// } else {
- 		// 	reload.classList.add("d-none");
- 		// 	return false;
- 		// }
+ 			},
+ 			error: function(data) {
+ 				//Cuando la interacción retorne un error, se ejecutará esto.
+ 				alertify.success(data)
+ 			}
+ 		})
  	})
 
  	function sendEmail(tipo, email) {

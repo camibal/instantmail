@@ -360,9 +360,9 @@
  	//recuperar contraseña
  	$('#form_send_email').submit(function(event) {
  		event.preventDefault();
- 		// let reload = document.getElementById("reload");
+ 		$("#enviar").addClass("d-none");
+ 		$("#enviando").removeClass("d-none");
  		let email = document.getElementById("email").value;
- 		//  reload.classList.remove("d-none");
  		$.ajax({
  			type: 'POST',
  			url: "../../controlador/ajaxUsuario.php",
@@ -373,11 +373,16 @@
  			success: function(data) {
  				if (data !== "El correo electrónico escrito no se encuentra en nuestra base de datos , por favor verifique") {
  					//Cuando la interacción sea exitosa, se ejecutará esto.
- 					// alertify.success(data)
-					 $("#exampleModal").modal("show");
+ 					alertify.success(data)
+ 					setTimeout(function() {
+ 						// $("#enviando").addClass("d-none");
+ 						// $("#enviar").removeClass("d-none");
+ 						window.location = "../login/index.php";
+ 					}, 1000)
  				} else {
+ 					$("#enviando").addClass("d-none");
+ 					$("#enviar").removeClass("d-none");
  					alertify.error(data)
- 					// reload.classList.add("d-none");
  				}
  			},
  			error: function(data) {
@@ -387,15 +392,9 @@
  		})
  	})
 
-	 function rediLogin(){
-		$("#exampleModal").modal("hide");
-		window.location = "../login/index.php";
-	 }
-
  	// actualizar contraseña
  	$('#forgetPss').submit(function(event) {
  		event.preventDefault();
- 		reload.classList.remove("d-none");
  		var email = document.getElementById("email").value;
  		var emailEncript = document.getElementById("emailEncript").value;
  		var idUser = document.getElementById("idUser").value;
@@ -420,7 +419,6 @@
  					//Cuando la interacción sea exitosa, se ejecutará esto.
  					alertify.success(data)
  					setTimeout(function() {
- 						reload.classList.add("d-none");
  						location.href = "../login/index.php";
  					}, 1000)
  				},

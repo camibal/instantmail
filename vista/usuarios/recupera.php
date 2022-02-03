@@ -77,37 +77,17 @@ $usuario = new Usuario();
         <div class="col-md-3 col-1">
         </div>
         <div class="col-md-6 col-10">
-          <button type="submit" class="btn btn-success w-100" value="Recuperar" name="Recuperar">Enviar</button>
+          <button type="submit" class="btn btn-success w-100" value="Recuperar" id="enviar" name="Recuperar">Enviar</button>
+          <button class="btn btn-success w-100 d-none" id="enviando" type="button" disabled>
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            Enviando...
+          </button>
         </div>
         <div class="col-md-3 col-1">
         </div>
       </div>
     </form>
   </div>
-</div>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Ventana de confirmación</h5>
-        <button type="button" class="close" onclick="rediLogin()">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        Se ha realizado el envío del link para el cambio de contraseña a tu correo, por favor ingresé y siga las instrucciones, para reestablecer la contraseña
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-success btn-ok" onclick="rediLogin()">Confirmar</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="reload d-none" id="reload" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fff; display: flex; justify-content: center; align-items: center;">
-  <img src="../../imagenes/Logo.png" alt="">
 </div>
 
 <?php

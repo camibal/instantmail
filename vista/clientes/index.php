@@ -39,6 +39,9 @@ $permisos        = $clienteController->Permisos($idUsuario, 2);
                         Documento
                     </th>
                     <th>
+                        Ciudad
+                    </th>
+                    <th>
                         Celular
                     </th>
                     <th>

@@ -102,10 +102,11 @@
 	 	email_cliente = $("#email_cliente").val();
 	 	celular_cliente = $("#celular_cliente").val();
 	 	direccion_cliente = $("#direccion_cliente").val();
+	 	ciudad_cliente = $("#ciudad_cliente").val();
 
 	    $.ajax({
 	      url: "../controlador/ajaxCliente.php",
-	      data: 'nombres_cliente='+nombres_cliente+'&apellidos_cliente='+apellidos_cliente+'&fkID_tipo_documento='+fkID_tipo_documento+'&documento_cliente='+documento_cliente+'&email_cliente='+email_cliente+'&celular_cliente='+celular_cliente+'&direccion_cliente='+direccion_cliente+'&tipo=inserta'
+	      data: 'nombres_cliente='+nombres_cliente+'&apellidos_cliente='+apellidos_cliente+'&ciudad_cliente='+ciudad_cliente+'&fkID_tipo_documento='+fkID_tipo_documento+'&documento_cliente='+documento_cliente+'&email_cliente='+email_cliente+'&celular_cliente='+celular_cliente+'&direccion_cliente='+direccion_cliente+'&tipo=inserta'
 	    })
 	    .done(function(data) {
 	      //---------------------
@@ -162,10 +163,11 @@
 	 	email_cliente = $("#email_cliente").val();
 	 	celular_cliente = $("#celular_cliente").val();
 	 	direccion_cliente = $("#direccion_cliente").val();
+		 ciudad_cliente = $("#ciudad_cliente").val();
 
 	    $.ajax({
 	      url: "../controlador/ajaxCliente.php",
-	      data: 'id_cliente='+id_cliente+'&nombres_cliente='+nombres_cliente+'&apellidos_cliente='+apellidos_cliente+'&documento_cliente='+documento_cliente+'&fkID_tipo_documento='+fkID_tipo_documento+'&email_cliente='+email_cliente+'&celular_cliente='+celular_cliente+'&direccion_cliente='+direccion_cliente+'&tipo=edita'
+	      data: 'id_cliente='+id_cliente+'&nombres_cliente='+nombres_cliente+'&apellidos_cliente='+apellidos_cliente+'&ciudad_cliente='+ciudad_cliente+'&documento_cliente='+documento_cliente+'&fkID_tipo_documento='+fkID_tipo_documento+'&email_cliente='+email_cliente+'&celular_cliente='+celular_cliente+'&direccion_cliente='+direccion_cliente+'&tipo=edita'
 	    })
 	    .done(function(data) {
 	      //---------------------

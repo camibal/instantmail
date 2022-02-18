@@ -10,7 +10,8 @@ class clienteController extends cliente
     }
 
     //Trae los permisos
-    public function Permisos($id_usuario, $id_modulo){
+    public function Permisos($id_usuario, $id_modulo)
+    {
         $cliente     = new Cliente();
         $resultado = $cliente->getPermisos($id_usuario, $id_modulo);
         return $resultado;
@@ -50,9 +51,10 @@ class clienteController extends cliente
             if (isset($listaClientes)) {
                 for ($i = 0; $i < sizeof($listaClientes); $i++) {
                     echo '<tr>';
-                    echo '<td>'.$listaClientes[$i]["nombres_cliente"].' '.$listaClientes[$i]["apellidos_cliente"].'</td>';
+                    echo '<td>' . $listaClientes[$i]["nombres_cliente"] . ' ' . $listaClientes[$i]["apellidos_cliente"] . '</td>';
                     echo '<td>' . $listaClientes[$i]["nombre_tipo_documento"] . '</td>';
                     echo '<td>' . $listaClientes[$i]["documento_cliente"] . '</td>';
+                    echo '<td>' . $listaClientes[$i]["ciudad_cliente"] . '</td>';
                     echo '<td>' . $listaClientes[$i]["celular_cliente"] . '</td>';
                     echo '<td>' . $listaClientes[$i]["direccion_cliente"] . '</td>';
                     echo '<td>' . $listaClientes[$i]["email_cliente"] . '</td>';
@@ -79,6 +81,22 @@ class clienteController extends cliente
             echo '<tr>';
             echo '<td colspan="9">No tienen permisos para consultar</td>';
             echo '</tr>';
+        }
+    }
+
+    //Select ciudades
+    public function getCiudades()
+    {
+        //Instancia de la cuenta de cobro
+        $contacto = new Cliente();
+        $resultado = $contacto->consultaCiudades();
+
+        if (isset($resultado)) {
+            for ($i = 0; $i < sizeof($resultado); $i++) {
+                echo '<option value="' . $resultado[$i]["nombre"] . '">' . $resultado[$i]["nombre"] . '</option>';
+            }
+        } else {
+            echo '<option value=">No existen ciudades">No existen ciudades</option>';
         }
     }
 }

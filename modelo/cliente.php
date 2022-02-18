@@ -41,9 +41,20 @@ class Cliente
     //Trae todos los clientes registrados
     public function getClientes()
     {
-        $query = "SELECT nombres_cliente, apellidos_cliente, nombre_tipo_documento, documento_cliente, celular_cliente, email_cliente, direccion_cliente, id_cliente FROM cliente
+        $query = "SELECT nombres_cliente, apellidos_cliente, nombre_tipo_documento, documento_cliente, ciudad_cliente, celular_cliente, email_cliente, direccion_cliente, id_cliente FROM cliente
             LEFT JOIN tipo_documento ON tipo_documento.id_tipo_documento = cliente.fkID_tipo_documento
             WHERE cliente.estado = 1 ";
+        $result = mysqli_query($this->link, $query);
+        $data   = array();
+        while ($data[] = mysqli_fetch_assoc($result));
+        array_pop($data);
+        return $data;
+    }
+
+    //Consultar ciudades
+    public function consultaCiudades()
+    {
+        $query = "SELECT id_ciudad, nombre FROM ciudades ORDER BY nombre";
         $result = mysqli_query($this->link, $query);
         $data   = array();
         while ($data[] = mysqli_fetch_assoc($result));
@@ -54,7 +65,7 @@ class Cliente
     //Crea un nuevo cliente
     public function insertaCliente($data)
     {
-        $query  = "INSERT INTO cliente (nombres_cliente,apellidos_cliente,fkID_tipo_documento,documento_cliente, email_cliente, celular_cliente, direccion_cliente) VALUES ('" . $data['nombres_cliente'] . "', '" . $data['apellidos_cliente'] . "', '" . $data['fkID_tipo_documento'] . "', '" . $data['documento_cliente'] . "', '" . $data['email_cliente'] . "', '" . $data['celular_cliente'] . "','" . $data['direccion_cliente'] . "')";
+        $query  = "INSERT INTO cliente (nombres_cliente,apellidos_cliente,ciudad_cliente,fkID_tipo_documento,documento_cliente, email_cliente, celular_cliente, direccion_cliente) VALUES ('" . $data['nombres_cliente'] . "', '" . $data['apellidos_cliente'] . "', '" . $data['fkID_tipo_documento'] . "', '" . $data['documento_cliente'] . "', '" . $data['email_cliente'] . "', '" . $data['celular_cliente'] . "','" . $data['direccion_cliente'] . "')";
         $result = mysqli_query($this->link, $query);
         if (mysqli_affected_rows($this->link) > 0) {
             return true;
@@ -66,7 +77,7 @@ class Cliente
     //Consultar cliente
     public function consultaCliente($data)
     {
-        $query = "SELECT id_cliente, nombres_cliente, apellidos_cliente, documento_cliente, direccion_cliente, email_cliente, celular_cliente, fkID_tipo_documento FROM cliente
+        $query = "SELECT id_cliente, nombres_cliente, apellidos_cliente, ciudad_cliente, documento_cliente, direccion_cliente, email_cliente, celular_cliente, fkID_tipo_documento FROM cliente
                 WHERE id_cliente = '" . $data['id_cliente'] . "'";
         $result = mysqli_query($this->link, $query);
         $data   = array();
@@ -78,7 +89,7 @@ class Cliente
     //Edita un cliente
     public function editaCliente($data)
     {
-        $query  = "UPDATE cliente SET nombres_cliente = '" . $data['nombres_cliente'] . "',apellidos_cliente = '" . $data['apellidos_cliente'] . "',fkID_tipo_documento = '" . $data['fkID_tipo_documento'] . "',documento_cliente = '" . $data['documento_cliente'] . "',celular_cliente = '" . $data['celular_cliente'] . "',direccion_cliente = '" . $data['direccion_cliente'] . "',email_cliente = '" . $data['email_cliente'] . "'  WHERE id_cliente = '" . $data['id_cliente'] . "'";
+        $query  = "UPDATE cliente SET nombres_cliente = '" . $data['nombres_cliente'] . "',apellidos_cliente = '" . $data['apellidos_cliente'] .  "',ciudad_cliente = '" . $data['ciudad_cliente'] . "',fkID_tipo_documento = '" . $data['fkID_tipo_documento'] . "',documento_cliente = '" . $data['documento_cliente'] . "',celular_cliente = '" . $data['celular_cliente'] . "',direccion_cliente = '" . $data['direccion_cliente'] . "',email_cliente = '" . $data['email_cliente'] . "'  WHERE id_cliente = '" . $data['id_cliente'] . "'";
         $result = mysqli_query($this->link, $query);
         if (mysqli_affected_rows($this->link) > 0) {
             return true;

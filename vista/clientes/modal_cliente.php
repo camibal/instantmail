@@ -27,6 +27,14 @@
             </div>
           </div>
           <div class="form-group row">
+            <label for="rsocial_cliente" class="col-sm-3 col-form-label">Ciudad:</label>
+            <div class="col-sm-7">
+              <select class="form-control" id="ciudad_cliente" name="ciudad_cliente"required="true">
+                <?php $clienteController->getCiudades();?>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
             <label for="rsocial_cliente" class="col-sm-3 col-form-label">Tipo documento:</label>
             <div class="col-sm-7">
               <select class="form-control" id="fkID_tipo_documento" name="fkID_tipo_documento"required="true">

@@ -13,7 +13,7 @@ class Conexion
         $this->host     = "localhost"; //Host
         $this->user     = "root"; //Usuario Base de datos
         $this->password = ""; //Contraseña de usuario de base de datos
-        $this->dataBase = "instant_mail"; //Nombre de la base de datos
+        $this->dataBase = "ins"; //Nombre de la base de datos
        
         /* Servidor 
        /*

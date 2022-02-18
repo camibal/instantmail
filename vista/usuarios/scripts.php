@@ -365,7 +365,7 @@
  		let email = document.getElementById("email").value;
  		$.ajax({
  			type: 'POST',
- 			url: "../../controlador/ajaxUsuario.php",
+ 			url: "../../controlador/ajaxRecuperar.php",
  			data: {
  				"tipo": 'recuperar',
  				"email": email
@@ -407,7 +407,7 @@
  		} else {
  			$.ajax({
  				type: 'POST',
- 				url: "../../controlador/ajaxUsuario.php",
+ 				url: "../../controlador/ajaxRecuperar.php",
  				data: {
  					"tipo": "actualizar",
  					"email": email,

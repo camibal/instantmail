@@ -137,12 +137,4 @@ class usuarioController extends usuario
             }
         }
     }
-    //Funcion para consultar usuario en DB
-    public function getConsultUser()
-    {
-        $usuario      = new Usuario();
-        $listaUsuario = $usuario->getUsuario();
-        echo  $listaUsuario;
-        return $listaUsuario;
-    }
 }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 31-01-2022 a las 23:41:31
+-- Tiempo de generación: 18-02-2022 a las 03:02:49
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 7.4.24
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `instant_mail`
+-- Base de datos: `ins`
 --
 
 -- --------------------------------------------------------
@@ -52,6 +52,26 @@ INSERT INTO `calificacion` (`id_calificacion`, `estado_calificacion`, `fecha_cal
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `ciudades`
+--
+
+CREATE TABLE `ciudades` (
+  `id_ciudad` int(11) NOT NULL,
+  `nombre` varchar(100) NOT NULL,
+  `estado` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `ciudades`
+--
+
+INSERT INTO `ciudades` (`id_ciudad`, `nombre`, `estado`) VALUES
+(1, 'Bogotá D.C.', 1),
+(2, 'Soacha', 1);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `cliente`
 --
 
@@ -59,6 +79,7 @@ CREATE TABLE `cliente` (
   `id_cliente` int(11) NOT NULL COMMENT 'Id del cliente',
   `nombres_cliente` varchar(50) NOT NULL COMMENT 'Nombres del cliente',
   `apellidos_cliente` varchar(50) NOT NULL COMMENT 'Apellidos del cliente',
+  `ciudad_cliente` varchar(100) NOT NULL,
   `fkID_tipo_documento` int(1) NOT NULL COMMENT 'Foranea del tipo de documento',
   `documento_cliente` varchar(50) NOT NULL COMMENT 'Documento del cliente',
   `email_cliente` varchar(100) NOT NULL COMMENT 'Email del cliente',
@@ -71,11 +92,11 @@ CREATE TABLE `cliente` (
 -- Volcado de datos para la tabla `cliente`
 --
 
-INSERT INTO `cliente` (`id_cliente`, `nombres_cliente`, `apellidos_cliente`, `fkID_tipo_documento`, `documento_cliente`, `email_cliente`, `celular_cliente`, `direccion_cliente`, `estado`) VALUES
-(1, 'PEPITO', 'PEREZ', 1, '123', 'camibal1995@gmail.com', '300', 'CALLE 100', 1),
-(2, 'PRUEBA', '', 0, '', 'CORREO4@GMAIL.COM', '4222', '', 2),
-(3, 'pablos', 'marin', 1, '123', 'correo1@gmail.com', '321', 'calle 100', 2),
-(4, 'JUAN CAMILO', 'GOMEZ ', 1, '10100555', 'CORREO3@GMAIL.COM.CO', '3002406185', 'CALLE 100 CON 15 36', 2);
+INSERT INTO `cliente` (`id_cliente`, `nombres_cliente`, `apellidos_cliente`, `ciudad_cliente`, `fkID_tipo_documento`, `documento_cliente`, `email_cliente`, `celular_cliente`, `direccion_cliente`, `estado`) VALUES
+(1, 'PEPITO', 'PEREZ', 'Bogotá D.C.', 1, '123', 'camibal1995@gmail.com', '300', 'CALLE 100', 1),
+(2, 'PRUEBA', '', '', 0, '', 'CORREO4@GMAIL.COM', '4222', '', 2),
+(3, 'pablos', 'marin', '', 1, '123', 'correo1@gmail.com', '321', 'calle 100', 2),
+(4, 'JUAN CAMILO', 'GOMEZ ', '', 1, '10100555', 'CORREO3@GMAIL.COM.CO', '3002406185', 'CALLE 100 CON 15 36', 2);
 
 -- --------------------------------------------------------
 
@@ -402,6 +423,13 @@ CREATE TABLE `tokens` (
   `fecha` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `tokens`
+--
+
+INSERT INTO `tokens` (`id`, `token`, `fkID_usuario`, `estado`, `fecha`) VALUES
+(1, 'FbxA1ASmSGoLMlfr0UsUuqhLOzpCUjhQg7Y/DGljPZs=', 3, 0, '18-02-2022');
+
 -- --------------------------------------------------------
 
 --
@@ -448,6 +476,12 @@ INSERT INTO `usuario` (`id_usuario`, `nombres_usuario`, `apellidos_usuario`, `em
 --
 ALTER TABLE `calificacion`
   ADD PRIMARY KEY (`id_calificacion`);
+
+--
+-- Indices de la tabla `ciudades`
+--
+ALTER TABLE `ciudades`
+  ADD PRIMARY KEY (`id_ciudad`);
 
 --
 -- Indices de la tabla `cliente`
@@ -538,6 +572,12 @@ ALTER TABLE `calificacion`
   MODIFY `id_calificacion` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Id de la calificacion', AUTO_INCREMENT=9;
 
 --
+-- AUTO_INCREMENT de la tabla `ciudades`
+--
+ALTER TABLE `ciudades`
+  MODIFY `id_ciudad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
@@ -607,7 +647,7 @@ ALTER TABLE `tipo_movimiento`
 -- AUTO_INCREMENT de la tabla `tokens`
 --
 ALTER TABLE `tokens`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
